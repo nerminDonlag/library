@@ -1,0 +1,140 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+
+  /* font colors */
+  --wFontC: white;
+  --bFontC: black;
+
+  /* first theme colors */
+  --oneFirstCb: #f3b391;
+  --twoFirstCb: #f6d4ba;
+  --threeFirstCb: cornsilk;
+  --fourFirstCb: #feea00;
+  --fiveFirstCw: #3f612d;
+
+  /* second theme */
+  --oneSecondCw: #272932;
+  --twoSecondCw: #4d7ea8;
+  --threeSecondCw: #828489;
+  --fourSecondCw: #9E90A2;
+  --fiveSecondCb: #b6c2d9;
+}
+
+body {
+  margin: 0;
+  background-color: var(--fiveFirstCw);
+  color: var(--bFontC);
+}
+
+header {
+  color: var(--threeFirstCb);
+  min-height: 10vh;
+  padding: 1rem;
+}
+
+.theme-cont {
+  text-align: end;
+}
+
+.theme-cont > button {
+  font-size: 1.5rem;
+  background-color: var(--fourFirstCb);
+  border: none;
+  border-radius: 1rem;
+  color: var(--fiveFirstCw);
+  padding: 0.25rem 2rem;
+  cursor: pointer;
+}
+
+.theme-cont > button:hover {
+  color: var(--bFontC);
+}
+
+.header-title {
+  font-size: 2.5rem;
+}
+
+main {
+  background-color: var(--threeFirstCb);
+  min-height: 80vh;
+}
+
+.add-book-cont {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.add-book-cont > button {
+  font-size: 2rem;
+  background-color: var(--threeFirstCb);
+  border: none;
+  border-radius: 2rem;
+  color: var(--fiveFirstCw);
+  padding: 1rem 3rem;
+  cursor: pointer;
+}
+
+.add-book-cont > button:hover {
+  background-color: var(--twoFirstCb);
+  color: var(--bFontC);
+}
+
+.card-cont {
+  border: 2px solid red;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border-radius: 1rem;
+  background-color: var(--twoFirstCb);
+  color: var(--bFontC);
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  gap: 1rem;
+}
+
+.title,
+.author,
+.pages {
+  max-width: 15rem;
+  margin: auto;
+}
+
+.card-btns > button {
+  width: 100%;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  color: var(--bFontC);
+}
+
+.card-btns > button:hover {
+  color: var(--fiveFirstCw);
+}
+
+.read-btn {
+  margin-bottom: 1rem;
+}
+
+footer {
+  padding: 1rem;
+  text-align: center;
+}
+
+footer > a {
+  color: var(--threeFirstCb);
+  text-decoration: none;
+}
+
+footer > a:hover {
+  color: var(--fourFirstCb);
+}
