@@ -48,9 +48,20 @@ function Book() {
   this.author = `${inputAuthorValue}`;
   this.pages = `${inputPagesValue}`;
   this.read = inputReadValue;
+  this.toggleRead = function () {
+    if (this.read) {
+      this.read = false;
+    } else {
+      this.read = true;
+    }
+  }
 }
 
 submitBtn.addEventListener('click', () => {
+  if(!inputTitleValue || !inputAuthorValue || !inputPagesValue) {
+    alert('Title, Author and Pages all required!');
+    return;
+  }
   modal.style.display = 'none';
   inputTitle.value = '';
   inputAuthor.value = '';
@@ -62,9 +73,7 @@ submitBtn.addEventListener('click', () => {
   inputAuthorValue = inputAuthor.value;
   inputPagesValue = inputPages.value;
   inputReadValue = false;
-  unDisplayLibrary();
-  displayLibrary();
-  createRemoveFunctionality();
+  handelLibrary();
 });
 
 function addBookToLibrary(book) {
@@ -78,7 +87,7 @@ function unDisplayLibrary() {
 }
 
 function displayLibrary() {
-  for (book in library) {
+  for (let book in library) {
     let card = document.createElement('div');
     card.classList.add('card');
     card.classList.add(`card${book}`);
@@ -106,6 +115,7 @@ function displayLibrary() {
       readButton.classList.add('unread');
       readButton.innerHTML = 'Unread';
     }
+    readButton.classList.add(`read${book}`);
     cardButtons.appendChild(readButton);
     let removeButton = document.createElement('button');
     removeButton.type = 'button';
@@ -121,11 +131,24 @@ function displayLibrary() {
 function createRemoveFunctionality() {
   for (let i = 0; i < library.length; i++) {
     document.querySelector(`.remove${i}`).addEventListener('click', () => {
-      document.querySelector(`.card${i}`).style.display = 'none';
       library.splice(i, 1);
-      unDisplayLibrary();
-      displayLibrary();
-      createRemoveFunctionality();
+      handelLibrary();
     });
   }
+}
+
+function createReadFunctionality() {
+  for (let i = 0; i < library.length; i++) {
+    document.querySelector(`.read${i}`).addEventListener('click', () => {
+      library[i].toggleRead();
+      handelLibrary();
+    });
+  }
+}
+
+function handelLibrary() {
+  unDisplayLibrary();
+  displayLibrary();
+  createReadFunctionality()
+  createRemoveFunctionality();
 }
