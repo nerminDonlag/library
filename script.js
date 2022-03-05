@@ -7,7 +7,7 @@ const inputPages = document.querySelector('.input-pages');
 const inputRead = document.querySelector('.input-read');
 const submitBtn = document.querySelector('form > button');
 const library = [];
-let myBook;
+let myBook = {};
 let inputTitleValue = inputTitle.value;
 let inputAuthorValue = inputAuthor.value;
 let inputPagesValue = inputPages.value;
@@ -58,9 +58,13 @@ submitBtn.addEventListener('click', () => {
   inputRead.checked = false;
   myBook = new Book;
   addBookToLibrary(myBook);
+  inputTitleValue = inputTitle.value;
+  inputAuthorValue = inputAuthor.value;
+  inputPagesValue = inputPages.value;
   inputReadValue = false;
   unDisplayLibrary();
   displayLibrary();
+  createRemoveFunctionality();
 });
 
 function addBookToLibrary(book) {
@@ -77,6 +81,7 @@ function displayLibrary() {
   for (book in library) {
     let card = document.createElement('div');
     card.classList.add('card');
+    card.classList.add(`card${book}`);
     let title = document.createElement('div');
     title.classList.add('title');
     title.innerHTML = `${library[book].title}`;
@@ -105,9 +110,22 @@ function displayLibrary() {
     let removeButton = document.createElement('button');
     removeButton.type = 'button';
     removeButton.classList.add('remove-btn');
+    removeButton.classList.add(`remove${book}`);
     removeButton.innerHTML = 'Remove';
     cardButtons.appendChild(removeButton);
     card.appendChild(cardButtons);
     cardContainer.appendChild(card);
+  }
+}
+
+function createRemoveFunctionality() {
+  for (let i = 0; i < library.length; i++) {
+    document.querySelector(`.remove${i}`).addEventListener('click', () => {
+      document.querySelector(`.card${i}`).style.display = 'none';
+      library.splice(i, 1);
+      unDisplayLibrary();
+      displayLibrary();
+      createRemoveFunctionality();
+    });
   }
 }
