@@ -1,4 +1,13 @@
-document.querySelector('.theme-cont > button').addEventListener('click', () => {
+const themeBtn = document.querySelector('.theme-cont > button');
+const addBookBtn = document.querySelector('.add-book-cont > button');
+const modal = document.querySelector('.modal');
+const inputTitle = document.querySelector('.input-title');
+const inputAuthor = document.querySelector('.input-author');
+const inputPages = document.querySelector('.input-pages');
+const inputRead = document.querySelector('.input-read');
+const submitBtn = document.querySelector('form > button');
+
+themeBtn.addEventListener('click', () => {
   changeColor();
 });
 
@@ -8,6 +17,14 @@ function changeColor() {
   root.className = newColor;
 }
 
-document.querySelector('.add-book-cont > button').addEventListener('click', () => {
-  document.querySelector('.modal').style.display = 'none';
+addBookBtn.addEventListener('click', () => {
+  modal.style.display = 'block';
+});
+
+submitBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+  inputTitle.value = '';
+  inputAuthor.value = '';
+  inputPages.value = '';
+  inputRead.checked = false;
 });

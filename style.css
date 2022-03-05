@@ -59,7 +59,7 @@ header {
 
 main {
   background-color: var(--secondC, cornsilk);
-  min-height: 80vh;
+  min-height: 75vh;
 }
 
 .add-book-cont {
@@ -153,7 +153,7 @@ footer > a:hover {
 }
 
 .modal {
-  /* display: none; */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -166,7 +166,7 @@ footer > a:hover {
 
 form {
   margin: auto;
-  margin-top: 25vh;
+  margin-top: 20vh;
   max-width: 18rem;
   background-color: var(--fourthC, #3f612d);
   color: var(--secondC, cornsilk);
