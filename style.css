@@ -267,3 +267,10 @@ form > button:hover {
   background-color: var(--thirdC, #feea00);
   color: var(--fourthC, #3f612d);
 }
+
+@media only screen and (min-width: 140rem) {
+  header,
+  main {
+    padding: 0 calc(50% - 70rem);
+  }
+}

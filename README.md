@@ -8,5 +8,4 @@ This library can:
 - toggle page theme
 
 Improvement ideas:
-- improve user input authentication (now it's just a alert message defined in script.js)
-- add left/right margins for bigger screens with media query
+- improve user input verification (now it's just a alert message defined in script.js)
