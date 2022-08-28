@@ -1,3 +1,4 @@
+//cache
 const themeBtn = document.querySelector('.theme-cont > button');
 const addBookBtn = document.querySelector('.add-book-cont > button');
 const modal = document.querySelector('.modal');
@@ -6,6 +7,7 @@ const inputAuthor = document.querySelector('.input-author');
 const inputPages = document.querySelector('.input-pages');
 const inputRead = document.querySelector('.input-read');
 const submitBtn = document.querySelector('form > button');
+
 const library = [];
 let myBook = {};
 let inputTitleValue = inputTitle.value;
@@ -13,6 +15,7 @@ let inputAuthorValue = inputAuthor.value;
 let inputPagesValue = inputPages.value;
 let inputReadValue = inputRead.checked;
 
+//theme toggle
 themeBtn.addEventListener('click', () => {
   changeColor();
 });
@@ -23,6 +26,7 @@ function changeColor() {
   root.className = newColor;
 }
 
+//add book module
 addBookBtn.addEventListener('click', () => {
   modal.style.display = 'block';
 });
@@ -43,22 +47,25 @@ inputRead.addEventListener('change', () => {
   inputReadValue = inputRead.checked;
 });
 
-function Book() {
-  this.title = `"${inputTitleValue}"`;
-  this.author = `${inputAuthorValue}`;
-  this.pages = `${inputPagesValue}`;
-  this.read = inputReadValue;
-  this.toggleRead = function () {
-    if (this.read) {
-      this.read = false;
-    } else {
-      this.read = true;
+//class
+class Book {
+  constructor() {
+    this.title = `"${inputTitleValue}"`;
+    this.author = `${inputAuthorValue}`;
+    this.pages = `${inputPagesValue}`;
+    this.read = inputReadValue;
+    this.toggleRead = function () {
+      if (this.read) {
+        this.read = false;
+      } else {
+        this.read = true;
+      }
     }
   }
 }
 
 submitBtn.addEventListener('click', () => {
-  if(!inputTitleValue || !inputAuthorValue || !inputPagesValue) {
+  if (!inputTitleValue || !inputAuthorValue || !inputPagesValue) {
     alert('Title, Author and Pages all required!');
     return;
   }
